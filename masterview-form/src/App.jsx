@@ -221,42 +221,42 @@ function App() {
         </div>
 
         {/* PORT OF DISCHARGE + PORT OF DELIVERY */}
-<div className="row mt-4">
-  <div className="col-3">
-    <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-      PORT OF DISCHARGE
-    </label>
-    <input
-      type="text"
-      className="form-control mt-0"
-      name="portOfDischarge"
-      placeholder="Enter port of discharge"
-    />
-  </div>
-  <div className="col-3">
-    <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-      PORT OF DELIVERY
-    </label>
-    <input
-      type="text"
-      className="form-control mt-0"
-      name="portOfDelivery"
-      placeholder="Enter port of delivery"
-    />
-  </div>
-
-  <div className="col-6">
-    <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-      TYPE OF MOVE
-    </label>
-    <input
-      type="text"
-      className="form-control mt-0"
-      name="typeOfMove"
-      placeholder="Enter type of move"
-    />
-  </div>
-</div>
+        <div className="row mt-4">
+          <div className="col-3">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              PORT OF DISCHARGE
+            </label>
+            <input
+              type="text"
+              className="form-control mt-0"
+              name="portOfDischarge"
+              placeholder="Enter port of discharge"
+            />
+          </div>
+          <div className="col-3">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              PORT OF DELIVERY
+            </label>
+            <input
+              type="text"
+              className="form-control mt-0"
+              name="portOfDelivery"
+              placeholder="Enter port of delivery"
+            />
+          </div>
+          
+          <div className="col-6">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              TYPE OF MOVE
+            </label>
+            <input
+              type="text"
+              className="form-control mt-0"
+              name="typeOfMove"
+              placeholder="Enter type of move"
+            />
+          </div>
+        </div>
 
         {/* Botón */}
         <div className="mb-3 mt-4">
