@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [rows, setRows] = useState([
+    { marks: '', packages: '', description: '' }
+  ]);
+
+  const addRow = () => {
+    setRows([...rows, { marks: '', packages: '', description: '' }]);
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Proforma</h2>
@@ -266,41 +275,127 @@ function App() {
           </div>
         </div>
 
+        {/* Encabezados */}
+        <div className="d-grid border" style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '2.5fr 1fr 4fr 2fr 2fr',
+        }}>
+          <label className="form-label fw-bold border px-2 py-1 bg-light text-dark text-center mb-0 rounded-top">
+            Marks and Numbers / Container Numbers
+          </label>
+          <label className="form-label fw-bold border px-2 py-1 bg-light text-dark text-center mb-0 rounded-top">
+            No. of Pkgs
+          </label>
+          <label className="form-label fw-bold border px-2 py-1 bg-light text-dark text-center mb-0 rounded-top">
+            Description of Packages and Goods
+          </label>
+          <label className="form-label fw-bold border px-2 py-1 bg-light text-dark text-center mb-0 rounded-top">
+            Gross Weight
+          </label>
+          <label className="form-label fw-bold border px-2 py-1 bg-light text-dark text-center mb-0 rounded-top">
+            Measurement
+          </label>
+        </div>
 
-        <div className="d-flex">
-  <div className="p-0" style={{ flex: 2.5 }}>
-    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
-      Marks and Numbers / Container Numbers
-    </label>
-  </div>
+        {/* Filas dinámicas */}
+        {rows.map((row, index) => (
+          <div 
+            key={index} 
+            className="mb-2 border"
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: '2.5fr 1fr 4fr 2fr 2fr',
+              gap: '4px'
+            }}
+          >
+            {/* Contenedor y Sellos (columna combinada) */}
+            <div className="d-flex flex-column">
+              <input
+                type="text"
+                className="form-control mb-1"
+                value={row.container}
+                onChange={(e) => {
+                  const newRows = [...rows];
+                  newRows[index].container = e.target.value;
+                  setRows(newRows);
+                }}
+                placeholder="Contenedor"
+              />
+              <input
+                type="text"
+                className="form-control"
+                value={row.seals}
+                onChange={(e) => {
+                  const newRows = [...rows];
+                  newRows[index].seals = e.target.value;
+                  setRows(newRows);
+                }}
+                placeholder="Sellos"
+              />
+            </div>
+              
+            {/* No. of Pkgs */}
+            <textarea
+              className="form-control h-100"
+              value={row.packages}
+              onChange={(e) => {
+                const newRows = [...rows];
+                newRows[index].packages = e.target.value;
+                setRows(newRows);
+              }}
+              placeholder="No. of pkgs"
+            />
 
-  <div className="p-0" style={{ flex: 1 }}>
-    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
-      No. of Pkgs
-    </label>
-  </div>
+            {/* Description */}
+            <textarea
+              className="form-control h-100"
+              value={row.description}
+              onChange={(e) => {
+                const newRows = [...rows];
+                newRows[index].description = e.target.value;
+                setRows(newRows);
+              }}
+              placeholder="Description of packages and goods"
+            />
 
-  <div className="p-0" style={{ flex: 4 }}>
-    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
-      Description of Packages and Goods
-    </label>
-  </div>
+            {/* Gross Weight */}
+            <textarea
+              className="form-control h-100"
+              value={row.grossWeight}
+              onChange={(e) => {
+                const newRows = [...rows];
+                newRows[index].grossWeight = e.target.value;
+                setRows(newRows);
+              }}
+              placeholder="Gross weight"
+            />
 
-  <div className="p-0" style={{ flex: 1 }}>
-    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
-      Gross Weight
-    </label>
-  </div>
+            {/* Measurements */}
+            <textarea
+              className="form-control h-100"
+              value={row.measurements}
+              onChange={(e) => {
+                const newRows = [...rows];
+                newRows[index].measurements = e.target.value;
+                setRows(newRows);
+              }}
+              placeholder="Measurements"
+            />
+          </div>
+        ))}
 
-  <div className="p-0" style={{ flex: 1 }}>
-    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
-      Measurement
-    </label>
-  </div>
-</div>
+        {/* BOTÓN AGREGAR FILA */}
+        <div className="mt-3">
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={addRow}
+          >
+            Agregar fila
+          </button>
+        </div>
 
-
-        {/* Botón */}
+        {/* Botón para generar Excel */}
         <div className="mb-3 mt-4">
           <button type="submit" className="btn btn-primary">
             Generar Excel
