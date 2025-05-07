@@ -233,7 +233,7 @@ function App() {
         <div className="row mt-4">
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0 rounded-top">
-      Port of Discharge
+              Port of Discharge
             </label>
             <input
               type="text"
@@ -343,7 +343,7 @@ function App() {
                 newRows[index].packages = e.target.value;
                 setRows(newRows);
               }}
-              placeholder="No. of pkgs"
+              placeholder="Numero de paquetes"
             />
 
             {/* Description */}
@@ -355,7 +355,7 @@ function App() {
                 newRows[index].description = e.target.value;
                 setRows(newRows);
               }}
-              placeholder="Description of packages and goods"
+              placeholder="Descripcion de paquetes y bienes"
             />
 
             {/* Gross Weight */}
@@ -367,7 +367,7 @@ function App() {
                 newRows[index].grossWeight = e.target.value;
                 setRows(newRows);
               }}
-              placeholder="Gross weight"
+              placeholder="Peso bruto"
             />
 
             {/* Measurements */}
@@ -379,13 +379,13 @@ function App() {
                 newRows[index].measurements = e.target.value;
                 setRows(newRows);
               }}
-              placeholder="Measurements"
+              placeholder="Medidas"
             />
           </div>
         ))}
 
         {/* BOTÓN AGREGAR FILA */}
-        <div className="mt-3">
+        <div className="mt-3 mb-3">
           <button
             type="button"
             className="btn btn-success"
@@ -393,6 +393,59 @@ function App() {
           >
             Agregar fila
           </button>
+        </div>
+
+        {/* MARCAS, TOTAL PKGS. & DESCRIPTION - Títulos */}
+        <div className="row">
+          <div className="col-3">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              Marcas
+            </label>
+          </div>
+          <div className="col-2">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              Total Pkgs
+            </label>
+          </div>
+          <div className="col-6">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+              Description of Packages and Goods
+            </label>
+          </div>
+        </div>
+
+        {/* Campos MARCAS, TOTAL PKGS. & DESCRIPTION */}
+        <div className="row">
+          <div className="col-3">
+            <textarea
+              className="form-control mt-0"
+              name="shipper"
+              rows="8"
+              placeholder="Enter marks information"
+              style={{ resize: 'none' }}
+            />
+          </div>
+
+          <div className="col-2">
+            <textarea
+              className="form-control mt-0"
+              name="shipper"
+              rows="1"
+              placeholder="Enter total packages"
+              style={{ resize: 'none' }}
+            />
+          </div>
+
+          <div className="col-6">
+            <textarea
+              className="form-control mt-0"
+              name="shipper"
+              rows="8"
+              placeholder="Enter description of packages and goods"
+              style={{ resize: 'none' }}
+            />
+          </div>
+          
         </div>
 
         {/* Botón para generar Excel */}
