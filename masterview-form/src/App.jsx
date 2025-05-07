@@ -150,7 +150,7 @@ function App() {
         <div className="row mt-4">
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              INITIAL CARRIAGE BY (MODE)*
+              Initial Carriage by (Mode)*
             </label>
             <input
               type="text"
@@ -161,7 +161,7 @@ function App() {
           </div>
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              PLACE OF INITIAL RECEIPT*
+              Place of Initial Receipt*
             </label>
             <input
               type="text"
@@ -176,7 +176,7 @@ function App() {
         <div className="row mt-4">
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              VESSEL VOY
+              Vessel
             </label>
             <input
               type="text"
@@ -187,7 +187,7 @@ function App() {
           </div>
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              PORT OF LOADING
+              Port of Loading
             </label>
             <input
               type="text"
@@ -198,7 +198,7 @@ function App() {
           </div>
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              LOADING PIER/TERMINAL
+              Loading Pier/Terminal
             </label>
             <input
               type="text"
@@ -209,7 +209,7 @@ function App() {
           </div>
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              ORIGINAL(S) TO BE RELEASED AT
+              Original(s) to be released
             </label>
             <input
               type="text"
@@ -223,40 +223,82 @@ function App() {
         {/* PORT OF DISCHARGE + PORT OF DELIVERY */}
         <div className="row mt-4">
           <div className="col-3">
-            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              PORT OF DISCHARGE
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0 rounded-top">
+      Port of Discharge
             </label>
             <input
               type="text"
-              className="form-control mt-0"
+              className="form-control rounded-bottom"
               name="portOfDischarge"
               placeholder="Enter port of discharge"
             />
           </div>
           <div className="col-3">
-            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              PORT OF DELIVERY
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0 rounded-top">
+              Port of Delivery
             </label>
             <input
               type="text"
-              className="form-control mt-0"
+              className="form-control rounded-bottom"
               name="portOfDelivery"
               placeholder="Enter port of delivery"
             />
           </div>
-          
           <div className="col-6">
-            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-              TYPE OF MOVE
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0 rounded-top">
+              Type of Move
             </label>
             <input
               type="text"
-              className="form-control mt-0"
+              className="form-control rounded-bottom"
               name="typeOfMove"
               placeholder="Enter type of move"
             />
           </div>
         </div>
+
+        {/* TITULO PARTE INFERIOR DEL FORMULARIO */}
+        <div className="row mt-4">
+          <div className="col-12">
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-center rounded">
+              PARTICULARS FURNISHED BY SHIPPER
+            </label>
+          </div>
+        </div>
+
+
+        <div className="d-flex">
+  <div className="p-0" style={{ flex: 2.5 }}>
+    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
+      Marks and Numbers / Container Numbers
+    </label>
+  </div>
+
+  <div className="p-0" style={{ flex: 1 }}>
+    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
+      No. of Pkgs
+    </label>
+  </div>
+
+  <div className="p-0" style={{ flex: 4 }}>
+    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
+      Description of Packages and Goods
+    </label>
+  </div>
+
+  <div className="p-0" style={{ flex: 1 }}>
+    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
+      Gross Weight
+    </label>
+  </div>
+
+  <div className="p-0" style={{ flex: 1 }}>
+    <label className="form-label fw-bold border px-2 py-1 d-block bg-light text-dark text-center mb-0 rounded-top">
+      Measurement
+    </label>
+  </div>
+</div>
+
 
         {/* Botón */}
         <div className="mb-3 mt-4">
