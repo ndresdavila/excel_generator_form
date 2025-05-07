@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './custom-toast.css'; // ← Este archivo contendrá los estilos personalizados
 
 import FormHeader from './components/FormHeader';
 import PartyDetails from './components/PartyDetails';
@@ -23,28 +24,34 @@ function App() {
     const elements = form.querySelectorAll('input, textarea');
     for (let el of elements) {
       if (!el.value.trim()) {
-        toast.error(`Por favor, complete el campo: ${el.placeholder || el.name}`, {
-          position: 'bottom-right',
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast.error(
+          <div className="toast-content">
+            <i className="bi bi-exclamation-triangle-fill"></i>
+            <b>Campo requerido:</b> <br></br>{el.placeholder || el.name}
+          </div>,
+          {
+            position: 'bottom-right',
+            className: 'error-toast',
+            autoClose: 5000,
+          }
+        );
         return;
       }
     }
 
-    toast.success('Todos los campos están llenos. Generando archivo Excel...', {
-      position: 'bottom-right',
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
+    toast.success(
+      <div className="toast-content">
+        <i className="bi bi-check-circle-fill me-2"></i>
+        <b>Exito:</b> <br></br>Todos los campos están completos. Generando archivo...
+      </div>,
+      {
+        position: 'bottom-right',
+        className: 'success-toast',
+        autoClose: 4000,
+      }
+    );
 
-    // Aquí irá la lógica de generación de Excel en el futuro
+    // Aquí irá la lógica de generación de Excel
   };
 
   return (
