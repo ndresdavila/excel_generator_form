@@ -16,6 +16,8 @@ export const fillExcelTemplate = async (formRef, rows) => {
     { id: 'consigneeContact', cell: 'B26' },
     { id: 'notify', cell: 'A28' },
     { id: 'notifyContact', cell: 'B33' },
+    { id: 'secondNotify', cell: 'G28' },
+    { id: 'secondNotifyContact', cell: 'H33' },
     { id: 'vessel', cell: 'A37' },
     { id: 'portOfLoading', cell: 'D37' },
     { id: 'portOfDischarge', cell: 'A39' },

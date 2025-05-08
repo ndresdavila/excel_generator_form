@@ -22,41 +22,47 @@ function App() {
   };
 
   const handleGenerateExcel = (e) => {
-    e.preventDefault();
-    const form = formRef.current;
-    const elements = form.querySelectorAll('input, textarea');
-    for (let el of elements) {
-      if (!el.value.trim()) {
-        toast.error(
-          <div className="toast-content">
-            <i className="bi bi-exclamation-triangle-fill"></i>
-            <b>Campo requerido:</b> <br></br>{el.placeholder || el.name}
-          </div>,
-          {
-            position: 'bottom-right',
-            className: 'error-toast',
-            autoClose: 5000,
-          }
-        );
-        return;
-      }
+  e.preventDefault();
+  const form = formRef.current;
+  const elements = form.querySelectorAll('input, textarea');
+  const optionalIds = ['secondNotify', 'secondNotifyContact'];
+
+  for (let el of elements) {
+    if (optionalIds.includes(el.id)) {
+      continue; // Saltar validación si es un campo opcional
     }
+    if (!el.value.trim()) {
+      toast.error(
+        <div className="toast-content">
+          <i className="bi bi-exclamation-triangle-fill"></i>
+          <b>Campo requerido:</b> <br></br>{el.placeholder || el.name}
+        </div>,
+        {
+          position: 'bottom-right',
+          className: 'error-toast',
+          autoClose: 5000,
+        }
+      );
+      return;
+    }
+  }
 
-    toast.success(
-      <div className="toast-content">
-        <i className="bi bi-check-circle-fill"></i>
-        <b>Exito:</b> <br></br> Todos los campos están completos. Generando archivo...
-      </div>,
-      {
-        position: 'bottom-right',
-        className: 'success-toast',
-        autoClose: 4000,
-      }
-    );
+  toast.success(
+    <div className="toast-content">
+      <i className="bi bi-check-circle-fill"></i>
+      <b>Éxito:</b> <br></br> Todos los campos obligatorios están completos. Generando archivo...
+    </div>,
+    {
+      position: 'bottom-right',
+      className: 'success-toast',
+      autoClose: 4000,
+    }
+  );
 
-    // Lógica de generación de Excel
-    fillExcelTemplate(formRef, rows);
-  };
+  // Lógica de generación de Excel
+  fillExcelTemplate(formRef, rows);
+};
+
 
   return (
     <div>
