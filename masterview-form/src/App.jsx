@@ -44,7 +44,24 @@ const fillExcelTemplate = async (formRef, rows) => {
     const containerRow = sheet.getRow(baseRow);         // Fila para el container
     containerRow.getCell(1).value = row.container;      // Columna A
     containerRow.getCell(4).value = row.packages;       // Columna D
-    containerRow.getCell(5).value = row.description;    // Columna E
+
+    // Campo de descripcion: lee linefeeds
+    const descriptionLines = row.description.split('\n').filter(line => line.trim() !== '');
+    descriptionLines.forEach((line, lineIndex) => {
+      const targetRow = sheet.getRow(baseRow + lineIndex);
+      if (lineIndex === 0) {
+        // Primera línea en la fila base
+        targetRow.getCell(6).value = line;
+        targetRow.getCell(6).alignment = { wrapText: true };
+      } else {
+        // Líneas siguientes debajo
+        targetRow.getCell(6).value = line;
+        targetRow.getCell(6).alignment = { wrapText: true };
+      }
+      targetRow.commit();
+    });
+
+
     containerRow.getCell(9).value = row.grossWeight;    // Columna I
     containerRow.getCell(10).value = row.measurements;  // Columna J
     containerRow.commit();
