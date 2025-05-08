@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './custom-toast.css';
-import ExcelJS from 'exceljs';
-import { saveAs } from 'file-saver';
 
 import FormHeader from './components/FormHeader';
 import PartyDetails from './components/PartyDetails';
@@ -11,71 +9,7 @@ import PortDetails from './components/PortDetails';
 import ParticularsSection from './components/ParticularsSection';
 import DynamicRows from './components/DynamicRows';
 import FooterFields from './components/FooterFields';
-
-const fillExcelTemplate = async (formRef, rows) => {
-  const response = await fetch('/Masterview-FORMATO_PROFORMA.xlsx');
-  const arrayBuffer = await response.arrayBuffer();
-
-  const workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.load(arrayBuffer);
-  const sheet = workbook.getWorksheet("BILL OF LADING ");
-
-  const fieldMappings = [
-    { id: 'shipper', cell: 'A12' },
-    { id: 'bookingNumber', cell: 'G12' },
-    { id: 'consignee', cell: 'A20' },
-    { id: 'consigneeContact', cell: 'B26' },
-    { id: 'notify', cell: 'A28' },
-    { id: 'notifyContact', cell: 'B33' },
-    { id: 'vessel', cell: 'A37' },
-    { id: 'portOfLoading', cell: 'D37' },
-    { id: 'portOfDischarge', cell: 'A39' },
-  ];
-
-  fieldMappings.forEach(({ id, cell }) => {
-    const value = formRef.current.querySelector(`#${id}`)?.value || '';
-    sheet.getCell(cell).value = value;
-  });
-
-  let startRow = 46;
-  rows.forEach((row, index) => {
-    const baseRow = startRow + (index * 5);
-
-    const containerRow = sheet.getRow(baseRow);         // Fila para el container
-    containerRow.getCell(1).value = row.container;      // Columna A
-    containerRow.getCell(4).value = row.packages;       // Columna D
-
-    // Campo de descripcion: lee linefeeds
-    const descriptionLines = row.description.split('\n').filter(line => line.trim() !== '');
-    descriptionLines.forEach((line, lineIndex) => {
-      const targetRow = sheet.getRow(baseRow + lineIndex);
-      if (lineIndex === 0) {
-        // Primera línea en la fila base
-        targetRow.getCell(6).value = line;
-        targetRow.getCell(6).alignment = { wrapText: true };
-      } else {
-        // Líneas siguientes debajo
-        targetRow.getCell(6).value = line;
-        targetRow.getCell(6).alignment = { wrapText: true };
-      }
-      targetRow.commit();
-    });
-
-
-    containerRow.getCell(9).value = row.grossWeight;    // Columna I
-    containerRow.getCell(10).value = row.measurements;  // Columna J
-    containerRow.commit();
-
-    const sealsRow = sheet.getRow(baseRow + 1);         // Fila siguiente para seals
-    sealsRow.getCell(1).value = row.seals;              // Columna A
-    sealsRow.commit();
-  });
-
-  const buffer = await workbook.xlsx.writeBuffer();
-  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-  saveAs(blob, 'Masterview-FORMATO_PROFORMA.xlsx');
-};
-
+import { fillExcelTemplate } from './utils/excelUtils';
 
 function App() {
   const [rows, setRows] = useState([{ container: '', seals: '', packages: '', description: '', grossWeight: '', measurements: '' }]);
