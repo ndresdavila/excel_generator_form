@@ -9,6 +9,39 @@ import PortDetails from './components/PortDetails';
 import ParticularsSection from './components/ParticularsSection';
 import DynamicRows from './components/DynamicRows';
 import FooterFields from './components/FooterFields';
+import ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
+
+const fillExcelTemplate = async (formRef) => {
+  const response = await fetch('/Masterview-FORMATO_PROFORMA.xlsx');
+  const arrayBuffer = await response.arrayBuffer();
+
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.load(arrayBuffer);
+  const sheet = workbook.getWorksheet("BILL OF LADING ");
+
+  const fieldMappings = [
+    { id: 'shipper', cell: 'A12' },
+    { id: 'bookingNumber', cell: 'G12' },
+    { id: 'consignee', cell: 'A20' },
+    { id: 'consigneeContact', cell: 'B26' },
+    { id: 'notify', cell: 'A28' },
+    { id: 'notifyContact', cell: 'B33' },
+    { id: 'vessel', cell: 'A37' },
+    { id: 'portOfLoading', cell: 'D37' },
+    { id: 'portOfDischarge', cell: 'A39' },
+  ];
+
+  fieldMappings.forEach(({ id, cell }) => {
+    const value = formRef.current.querySelector(`#${id}`)?.value || '';
+    sheet.getCell(cell).value = value; // ← solo cambia el valor, NO el estilo
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  saveAs(blob, 'FORMATO_PROFORMA_COMPLETADO.xlsx');
+};
+
 
 function App() {
   const [rows, setRows] = useState([{ container: '', seals: '', packages: '', description: '', grossWeight: '', measurements: '' }]);
@@ -51,7 +84,8 @@ function App() {
       }
     );
 
-    // Aquí irá la lógica de generación de Excel
+    // Lógica de generación de Excel
+    fillExcelTemplate(formRef);
   };
 
   return (
