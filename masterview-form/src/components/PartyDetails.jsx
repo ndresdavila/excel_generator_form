@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function PartyDetails() {
   return (
-    <div className="container mt-4">
-      <div className="row">
+    <>
+      <div className="row mt-4">
         <div className="col-6">
           <label className="form-label fw-bold border p-2 d-block bg-primary-subtle text-start mb-0">CONSIGNEE</label>
           <textarea
@@ -59,7 +59,7 @@ export default function PartyDetails() {
         </div>
 
         <div className="col-6 ps-1">
-          <label className="form-label fw-bold border p-2 d-block bg-primary-subtle text-start mb-0">SECOND NOTIFY PARTY</label>
+          <label className="form-label fw-bold border p-2 d-block bg-primary-subtle text-start mb-0">SECOND NOTIFY PARTY <small className="text-muted">(Opcional)</small></label>
           <textarea
             id="secondNotify"
             className="form-control mt-0"
@@ -84,6 +84,6 @@ export default function PartyDetails() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
