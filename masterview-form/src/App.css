@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  color: #0c3360;
 }
 
 .logo {
@@ -39,4 +39,16 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.scale-container {
+  transform: scale(0.75);
+  transform-origin: top center;
+}
+
+.logo-top {
+  width: 250px; /* Aumenta el tamaño del logo */
+  height: auto;
+  display: block;
+  margin-bottom: 2rem; /* Espacio debajo del logo */
 }

@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Excel files
+# Public files
 *.xlsx
+*.png

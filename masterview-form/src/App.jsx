@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './custom-toast.css';
+import './App.css';
 
 import FormHeader from './components/FormHeader';
 import PartyDetails from './components/PartyDetails';
@@ -13,6 +14,7 @@ import { fillExcelTemplate } from './utils/excelUtils';
 
 function App() {
   const [rows, setRows] = useState([{ container: '', seals: '', packages: '', description: '', grossWeight: '', measurements: '' }]);
+  
   const formRef = useRef(null);
 
   const addRow = () => {
@@ -57,24 +59,28 @@ function App() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Proforma</h2>
+    <div>
+      <div className="scale-container">
+      <div className="container mt-5">
+        <img src="/logo.png" alt="Logo" className="logo-top mb-4" />
+        <h2 className="mb-4">PROFORMA</h2>
 
-      <form ref={formRef}>
-        <FormHeader />
-        <PartyDetails />
-        <PortDetails />
-        <ParticularsSection />
-        <DynamicRows rows={rows} setRows={setRows} addRow={addRow} />
-        <FooterFields />
+        <form ref={formRef}>
+          <FormHeader />
+          <PartyDetails />
+          <PortDetails />
+          <ParticularsSection />
+          <DynamicRows rows={rows} setRows={setRows} addRow={addRow} />
+          <FooterFields />
 
-        <div className="mb-3 mt-4">
-          <button type="button" className="btn btn-primary" onClick={handleGenerateExcel}>
-            Generar Archivo Excel
-          </button>
-        </div>
-      </form>
-
+          <div className="mb-3 mt-4">
+            <button type="button" className="btn btn-primary" onClick={handleGenerateExcel}>
+              Generar Archivo Excel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
       <ToastContainer />
     </div>
   );

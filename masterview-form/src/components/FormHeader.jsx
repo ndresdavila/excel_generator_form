@@ -5,12 +5,12 @@ export default function FormHeader() {
     <>
       <div className="row">
         <div className="col-6">
-          <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+        <label className="form-label fw-bold border p-2 d-block bg-primary-subtle text-start mb-0">
           SHIPPER/EXPORT
           </label>
         </div>
         <div className="col-3">
-          <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
+        <label className="form-label fw-bold border p-2 d-block bg-primary-subtle text-start mb-0">
             Booking Number
           </label>
         </div>
