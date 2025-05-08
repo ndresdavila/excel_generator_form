@@ -6,7 +6,7 @@ export default function FormHeader() {
       <div className="row">
         <div className="col-6">
           <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">
-            Shipper/Export
+          SHIPPER/EXPORT
           </label>
         </div>
         <div className="col-3">
@@ -17,7 +17,7 @@ export default function FormHeader() {
       </div>
       <div className="row">
         <div className="col-6">
-          <textarea className="form-control mt-0" name="shipper" rows="8" placeholder="Principal or Seller licensee and full address" style={{ resize: 'none' }} />
+          <textarea className="form-control mt-0" name="shipper" rows="8" placeholder="SHIPPER/EXPORT: Principal or Seller licensee and full address" style={{ resize: 'none' }} />
         </div>
         <div className="col-3">
           <input type="text" className="form-control mt-0" name="bookingNumber" placeholder="Enter booking number" />

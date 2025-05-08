@@ -4,8 +4,8 @@ export default function PartyDetails() {
   return (
     <div className="row mt-4">
       <div className="col-6">
-        <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">Consignee</label>
-        <textarea className="form-control mt-0" name="consignee" rows="8" placeholder="Name and Full Address / Non-Negotiable Unless Consigned to Order" style={{ resize: 'none' }} />
+        <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">CONSIGNEE</label>
+        <textarea className="form-control mt-0" name="consignee" rows="8" placeholder="CONSIGNEE: Name and Full Address / Non-Negotiable Unless Consigned to Order" style={{ resize: 'none' }} />
         <div className="row g-0 mt-0">
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">Contact</label>
@@ -16,8 +16,8 @@ export default function PartyDetails() {
         </div>
         <div className="row g-0 mt-4">
           <div className="col-12">
-            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">Notify Party / Intermediate Consignee</label>
-            <textarea className="form-control mt-0" name="notifyParty" rows="8" placeholder="Name and full address" style={{ resize: 'none' }} />
+            <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">NOTIFY PARTY</label>
+            <textarea className="form-control mt-0" name="notifyParty" rows="8" placeholder="NOTIFY PARTY: Name and full address" style={{ resize: 'none' }} />
           </div>
           <div className="col-3">
             <label className="form-label fw-bold border p-2 d-block bg-light text-dark text-start mb-0">Contact</label>

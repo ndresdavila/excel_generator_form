@@ -17,7 +17,7 @@ export default function DynamicRows({ rows, setRows, addRow }) {
             <input type="text" className="form-control" value={row.seals} onChange={e => { const nr=[...rows]; nr[index].seals=e.target.value; setRows(nr);} } placeholder="Seals" />
           </div>
           <textarea className="form-control h-100 resize-none" value={row.packages} onChange={e => { const nr=[...rows]; nr[index].packages=e.target.value; setRows(nr);} } placeholder="Number of packages" />
-          <textarea className="form-control h-100 resize-none" value={row.description} onChange={e => { const nr=[...rows]; nr[index].description=e.target.value; setRows(nr);} } placeholder="Description of packages and goods" />
+          <textarea className="form-control h-100 resize-none" value={row.description} onChange={e => { const nr=[...rows]; nr[index].description=e.target.value; setRows(nr);} } placeholder="Enter description of packages and goods" />
           <textarea className="form-control h-100 resize-none" value={row.grossWeight} onChange={e => { const nr=[...rows]; nr[index].grossWeight=e.target.value; setRows(nr);} } placeholder="Gross weight" />
           <textarea className="form-control h-100 resize-none" value={row.measurements} onChange={e => { const nr=[...rows]; nr[index].measurements=e.target.value; setRows(nr);} } placeholder="Measurements" />
         </div>

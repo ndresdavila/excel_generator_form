@@ -41,8 +41,8 @@ function App() {
 
     toast.success(
       <div className="toast-content">
-        <i className="bi bi-check-circle-fill me-2"></i>
-        <b>Exito:</b> <br></br>Todos los campos están completos. Generando archivo...
+        <i className="bi bi-check-circle-fill"></i>
+        <b>Exito:</b> <br></br> Todos los campos están completos. Generando archivo...
       </div>,
       {
         position: 'bottom-right',
